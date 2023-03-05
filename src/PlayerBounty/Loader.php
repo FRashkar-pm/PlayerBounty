@@ -26,7 +26,7 @@ class Loader extends PluginBase {
         $this->config = new Config($this->getDataFolder(). "/messages.yml", Config::YAML);
 	$this->getServer()->getPluginManager()->registerEvents(new Events($this), $this);
         $this->getServer()->getCommandMap()->register("playerbounty", new PlayerBountyCommand($this));
-	$economy = EconomyAPI::getInstance();
+	$this->economy = EconomyAPI::getInstance();
 	}
 
     public function getMoney(Player $player) : float {
