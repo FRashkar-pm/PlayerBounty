@@ -16,15 +16,15 @@ use function array_shift;
 
 class Loader extends PluginBase {
 
-    public EconomyAPI $economy;
+    public $economy = EconomyAPI::getInstance();
     public Config $config;
     public array $bounty = [];
 
 	public function onEnable() : void{
+	$this->getServer()->getPluginManager()->getPlugin("EconomyAPI");
         $this->saveResource("messages.yml");
         $this->config = new Config($this->getDataFolder(). "/messages.yml", Config::YAML);
-        $this->economy = EconomyAPI::getInstance();
-		$this->getServer()->getPluginManager()->registerEvents(new Events($this), $this);
+	$this->getServer()->getPluginManager()->registerEvents(new Events($this), $this);
         $this->getServer()->getCommandMap()->register("playerbounty", new PlayerBountyCommand($this));
 	}
 
