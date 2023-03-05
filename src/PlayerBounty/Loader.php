@@ -16,7 +16,7 @@ use function array_shift;
 
 class Loader extends PluginBase {
 
-    public $economy = EconomyAPI::getInstance();
+    $economy = EconomyAPI::getInstance();
     public Config $config;
     public array $bounty = [];
 
